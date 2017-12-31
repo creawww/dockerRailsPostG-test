@@ -1,0 +1,57 @@
+version: '2'
+
+services:
+  db:
+    image: postgres:9.6
+    container_name: dbps     
+
+    volumes:
+      - ./db_files:/var/lib/postgresql/data
+
+    restart: always
+
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: toor
+
+    ports:
+      - "5432:5432"
+
+  rails:
+    image: rails:5.1.4
+    container_name: drails     
+    depends_on:
+      - db
+    build:
+      context: ./
+      dockerfile: DockerFileRails
+    links:
+      - db
+    environment:
+      DB_HOST: db:5432
+      RAILS_ENV: development
+   
+    volumes:
+      - ./app:/home/rails/app
+      - ./bundle:/usr/local/bundle   
+
+    ports:
+      - 3000:3000
+    command: rails s
+
+  selenium:
+    image: selenium/standalone-chrome
+    container_name: selenium
+    environment:
+      - JAVA_OPTS=-Dselenium.LOGGER.level=WARNING
+    ports:
+      - 4444:4444
+  node:
+    build: './e2e'
+    container_name: testnode
+    volumes:
+      - './e2e:/test'
+    links:
+      - rails
+      - selenium
+  

@@ -1,0 +1,50 @@
+#!/bin/bash
+# Bash wrappers for docker run commands
+rake(){
+	docker exec -it \
+        --user $UID:$UID \
+		drails \
+		rake "$@"
+}
+
+rails(){
+    docker exec -it \
+        --user $UID:$UID \
+        drails \
+        rails "$@"
+}
+
+bundle(){
+    docker exec -it \
+        --user $UID:$UID \
+        drails \
+        bundle "$@"
+}
+
+gem(){
+    docker exec -it \
+        --user $UID:$UID \
+        drails \
+        gem "$@"
+}
+
+ruby(){
+    docker exec -it \
+        --user $UID:$UID \
+        drails \
+        ruby "$@"
+}
+
+irb(){
+    docker exec -it \
+        --user $UID:$UID \
+        drails \
+        irb "$@"
+}
+
+rspec(){
+    docker exec -it \
+        --user $UID:$UID \
+        drails \
+        rspec "$@"
+}

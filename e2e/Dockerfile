@@ -1,0 +1,9 @@
+FROM node:7.9.0
+
+ENV APP /test
+RUN mkdir -p $APP
+
+WORKDIR $APP
+COPY . $APP
+
+CMD npm install

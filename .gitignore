@@ -1,0 +1,10 @@
+/.bundle
+
+# Ignore all logfiles and tempfiles.
+/app/log/*
+/app/tmp/*
+!/app/log/.keep
+!/app/tmp/.keep
+
+/e2e/node_modules
+/e2e/captures
