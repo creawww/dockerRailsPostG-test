@@ -1,7 +1,6 @@
 # DOCKER RUBY ON RAILS WIDTH DATABASE POSTGRES
 
-Un entorno docker para desarrollo de aplicaciones de Ruby on Rails con base de datos Postgres
-y entorno de test end to end con node webdriveio, nocha y selenium
+Un entorno docker para desarrollo de aplicaciones de Ruby on Rails con base de datos Postgres y entorno de test end to end con node webdriveio, nocha y selenium
 
 - Rails version 5.1.4 (se puede cambiar en app/Gemfile)
 - Postgres version 9.6 (se puede cambiar en docker-compose.yml)
@@ -21,7 +20,7 @@ y entorno de test end to end con node webdriveio, nocha y selenium
     - **Docker-compose.yml**       # docker-compose entorno rails 
     - **Docker-compose-e2e.yml**   # docker-compose run test end to end    
     - **DockerFileRails**          # Archivo Dockerfile de instalacion de ruby
-    - **railsSources**             # Funciones bash para resumir instrucciones docker mediante source  
+    - **sourcesRails**             # Funciones bash para resumir instrucciones docker mediante source  
     - **README.md**
 
 
@@ -102,7 +101,7 @@ Para trabajar, siempre tiene que estar corriendo en un terminal el docker-compos
 
 cargamos el script 
 
-    source railsSource
+    source sourceRails
 
 y en este terminal ya no tenemos que poner "docker exec -it --user $UID:$UID drails", para ejecutar el servidor simplemente pondremos:
 
