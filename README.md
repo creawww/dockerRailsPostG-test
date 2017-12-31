@@ -1,6 +1,8 @@
 # DOCKER RUBY ON RAILS WIDTH DATABASE POSTGRES
 
 Un entorno docker para desarrollo de aplicaciones de Ruby on Rails con base de datos Postgres
+y entorno de test end to end con node webdriveio, nocha y selenium
+
 - Rails version 5.1.4 (se puede cambiar en app/Gemfile)
 - Postgres version 9.6 (se puede cambiar en docker-compose.yml)
 
@@ -12,12 +14,15 @@ Un entorno docker para desarrollo de aplicaciones de Ruby on Rails con base de d
     - **[db_file]**                # Directorio de presistencia de datos Mysql
 
     - **[bundle]**                 # Directorio de persistencia de las gemas de bundler
+    - **[e2e]**                    # Directorio de config test end to end
+    - **[e2e/spec/]**              # Carpeta de test
 
-    - **Docker-compose.yml**       # Archivo con las instrucciones del docker-compose
+
+    - **Docker-compose.yml**       # docker-compose entorno rails 
+    - **Docker-compose-e2e.yml**   # docker-compose run test end to end    
     - **DockerFileRails**          # Archivo Dockerfile de instalacion de ruby
     - **railsSources**             # Funciones bash para resumir instrucciones docker mediante source  
     - **README.md**
-    - **start_ruby_on_rails.png**
 
 
 ## Construir la imagen del contenedor rails (drails)
@@ -120,6 +125,8 @@ y en este terminal ya no tenemos que poner "docker exec -it --user $UID:$UID dra
     rake db:migrate
 
 # TEST ENDTOEND
+
+Entorno de test end to end con node webdriveio, nocha y selenium
 
     docker-compose -f docker-compose-e2e.yml build
 
